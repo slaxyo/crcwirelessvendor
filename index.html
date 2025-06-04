@@ -1,10 +1,124 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>landing page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarkston Summer Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="css/index.css" rel="stylesheet" />
 </head>
 <body>
-    LANDING
+  <header>
+    <div class="nav">
+      <img src="images/IMG_0018 (1).png" alt="CRCWireless Logo">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#activities">What to Expect</a>
+        <a href="#faq">FAQ</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="/vendor">Vendor Signup</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Clarkston Summer Market</h1>
+    <p>Join us for a vibrant one-day celebration of community, culture, and summer fun. All are welcome!</p>
+    <a href="/vendor">Become a Vendor</a>
+    <div class="black-friday-timer">
+      <div class="time-item"><div id="days">00</div><p>Days</p></div>
+      <span class="colon">:</span>
+      <div class="time-item"><div id="hours">00</div><p>Hours</p></div>
+      <span class="colon">:</span>
+      <div class="time-item"><div id="minutes">00</div><p>Minutes</p></div>
+      <span class="colon">:</span>
+      <div class="time-item"><div id="seconds">00</div><p>Seconds</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About the Market</h2>
+    <p>The Clarkston Summer Market is a community-driven event bringing together families, friends, and neighbors to celebrate culture, diversity, and creativity in the heart of Clarkston.</p>
+  </section>
+
+  <section class="section" id="activities">
+    <h2>What to Expect</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Live Performances</strong>
+        <p>Enjoy music, dance, and spoken word performances from local talent.</p>
+      </div>
+      <div class="card">
+        <strong>Food Trucks</strong>
+        <p>Sample delicious food from a range of cultures and cuisines.</p>
+      </div>
+      <div class="card">
+        <strong>Games & Activities</strong>
+        <p>Family-friendly fun including games, raffles, and interactive booths.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <h2>FAQ</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Is it free to attend?</strong>
+        <p>Yes, this event is completely free for the public!</p>
+      </div>
+      <div class="card">
+        <strong>Where is it located?</strong>
+        <p>Clarkston City Center — full details will be posted on our socials.</p>
+      </div>
+      <div class="card">
+        <strong>How can I volunteer?</strong>
+        <p>We love volunteers! <a href="mailto:info@crcwireless.com">Email us</a> to sign up.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sponsors">
+    <h2>Our Sponsors</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>CRCWireless</strong>
+        <p>Proudly supporting community engagement and connection.</p>
+      </div>
+      <div class="card">
+        <strong>Your Business Here</strong>
+        <p>Interested in becoming a sponsor? <a href="mailto:info@crcwireless.com">Reach out to us</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Clarkston Summer Market</p>
+    <p>Contact: info@crcwireless.com | (404) 555-1234</p>
+    <p>Follow us: @ClarkstonMarket on Instagram & Facebook</p>
+    <p><a href="mailto:info@crcwireless.com">Sign up to volunteer</a></p>
+  </footer>
+
+  <script>
+    const countdownDate = new Date("July 19, 2025 00:00:00").getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      if (distance < 0) {
+        clearInterval(countdown);
+        ["days", "hours", "minutes", "seconds"].forEach(id => {
+          document.getElementById(id).textContent = "00";
+        });
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("days").textContent = String(days).padStart(2, "0");
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }, 1000);
+  </script>
 </body>
 </html>
