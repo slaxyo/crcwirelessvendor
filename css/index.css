@@ -396,3 +396,258 @@ select {
   padding: 0;
   box-shadow: none;
 }
+.events-section {
+  background: #f8fbff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.events-section h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #0d1b2a;
+  margin-bottom: 50px;
+}
+
+.events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 74, 173, 0.08);
+  max-width: 420px;
+  width: 100%;
+  padding: 30px 25px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 74, 173, 0.15);
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.event-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0d1b2a;
+  margin-bottom: 10px;
+}
+
+.event-date {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.event-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.calendar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.calendar-button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-button.google {
+  background: #4285f4;
+  color: white;
+}
+
+.calendar-button.google:hover {
+  background: #3367d6;
+}
+
+.calendar-button.apple {
+  background: #333;
+  color: white;
+}
+
+.calendar-button.apple:hover {
+  background: #000;
+}
+
+@media (max-width: 768px) {
+  .event-card {
+    max-width: 90%;
+  }
+}
+.vendors-preview {
+  background: #f0f6ff;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.vendors-preview h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #0d1b2a;
+}
+
+.vendors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.vendor-item {
+  background: white;
+  border: 2px solid #e1e9f6;
+  padding: 30px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+}
+
+.vendor-item:hover {
+  transform: translateY(-6px);
+  border-color: #004aad;
+}
+
+.vendor-item .icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.vendor-item p {
+  font-size: 0.95rem;
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.5;
+  max-width: 90%;
+}
+.footer {
+  background-color: #0f2b66; /* CRC blue */
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  margin: 10px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  background-color: #1e66e6; /* Accent blue */
+  color: white;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.socials img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* makes icons white */
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
+
+.credit {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.footer-bottom {
+  background-color: #1541a1;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.footer-bottom a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
