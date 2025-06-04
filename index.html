@@ -5,115 +5,274 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clarkston Summer Market Vendor Sign-Up</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pzw7uPUy9Or2B+5YfBphq2ZRtOrzllsNRAYmtHFHiPPYBjmmP6zE8tODoGZ6d+Z+RkvlVnUScvMxF3McdLdfKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    * { box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
-      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-      padding: 20px;
-      color: #333;
+      background: linear-gradient(135deg, #dbeafe, #f0f9ff);
+      padding: 40px 20px;
+      color: #111827;
     }
     .container {
-      max-width: 700px;
+      max-width: 750px;
       margin: auto;
-      background: white;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .logo {
+      width: 140px;
+      margin: 0 auto 20px;
+      display: block;
     }
     h1 {
       text-align: center;
-      color: #222;
+      color: #1e3a8a;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .social-links {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    .social-links a {
+      margin: 0 10px;
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 600;
     }
     label {
       display: block;
       margin-top: 20px;
       font-weight: 600;
+      font-size: 1rem;
+      color: #374151;
     }
     input, select, textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-top: 8px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
       font-size: 1rem;
+      transition: border 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
     }
     button {
-      margin-top: 30px;
-      width: 100%;
-      background: #2c7be5;
+      margin-top: 20px;
+      background: #3b82f6;
       color: white;
       border: none;
-      padding: 14px;
-      border-radius: 10px;
+      padding: 14px 20px;
+      border-radius: 12px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.3s;
     }
-    button:hover {
-      background: #1a5fd0;
+    button:hover { background: #2563eb; }
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .step { display: none; }
+    .step.active {
+      display: block;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .progress-bar {
+      width: 100%;
+      background: #e0e7ff;
+      height: 8px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background: #3b82f6;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .checkbox-label {
+      margin-top: 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .checkbox-label input {
+      margin-top: 3px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <img style="width: 20%;" src="IMG_0018 (1).png" alt="CRCWireless Logo" class="logo">
     <h1>Clarkston Summer Market Vendor Sign-Up</h1>
+    <div class="social-links">
+      Follow us: <a href="https://instagram.com/crcwireless" target="_blank">@crcwireless</a>
+    </div>
+    <div class="progress-bar"><div class="progress" id="progress"></div></div>
     <form id="vendorForm">
-      <label for="vendorName">Vendor/Business Name</label>
-      <input type="text" id="vendorName" name="vendorName" required />
+      <div class="step active">
+        <label for="vendorName"><i class="fas fa-store"></i> Vendor/Business Name</label>
+        <input type="text" id="vendorName" name="vendorName" required />
 
-      <label for="contactName">Contact Name</label>
-      <input type="text" id="contactName" name="contactName" required />
+        <label for="contactName"><i class="fas fa-user"></i> Contact Name</label>
+        <input type="text" id="contactName" name="contactName" required />
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required />
+        <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+        <input type="tel" id="phone" name="phone" required placeholder="(XXX) XXX-XXXX" />
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required />
+        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+        <input type="email" id="email" name="email" required />
 
-      <label for="vendorType">Type of Vendor</label>
-      <select id="vendorType" name="vendorType" required>
-        <option value="">Select one</option>
-        <option value="food">Food Vendor ($50)</option>
-        <option value="non-food">Non-Food Vendor ($30)</option>
-      </select>
+        <div class="form-buttons">
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
 
-      <label for="description">Brief Description of What You're Selling</label>
-      <textarea id="description" name="description" rows="4" required></textarea>
+      <div class="step">
+        <label for="vendorType">Type of Vendor</label>
+        <select id="vendorType" name="vendorType" required>
+          <option value="">Select one</option>
+          <option value="food">Food Vendor ($50)</option>
+          <option value="non-food">Non-Food Vendor ($30)</option>
+        </select>
 
-      <label for="power">Do you need power?</label>
-      <select id="power" name="power" required>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
+        <label for="description">Brief Description of What You're Selling</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
 
-      <label for="table">Will you bring your own table?</label>
-      <select id="table" name="table" required>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
+        <label for="setupTime">What time will you arrive to set up?</label>
+        <input type="time" id="setupTime" name="setupTime" required />
 
-      <label for="social">Instagram or Website (optional)</label>
-      <input type="url" id="social" name="social" />
+        <label for="power">Do you need power?</label>
+        <select id="power" name="power" required>
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
 
-      <label for="notes">Additional Notes (optional)</label>
-      <textarea id="notes" name="notes" rows="3"></textarea>
+        <label for="table">Will you bring your own table?</label>
+        <select id="table" name="table" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
 
-      <label>
-        <input type="checkbox" required />
-        I understand and agree to the vendor fee listed above.
-      </label>
+        <label for="social">Instagram or Website (optional)</label>
+        <input type="text" id="social" name="social" placeholder="@yourhandle or yourwebsite.com" />
 
-      <button type="submit">Submit</button>
+        <label for="notes">Additional Notes (optional)</label>
+        <textarea id="notes" name="notes" rows="3"></textarea>
+
+        <label class="checkbox-label">
+          <input type="checkbox" required />
+          I understand and agree to the vendor fee listed above. I will arrive at least one hour before the start of the market.
+        </label>
+
+        <div class="form-buttons">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
     </form>
   </div>
 
+  <div class="modal" id="confirmationModal">
+    <div class="modal-content">
+      <h2>Thank you!</h2>
+      <p>Your application has been received. We'll be in touch soon.</p>
+    </div>
+  </div>
+
   <script>
+    const steps = document.querySelectorAll('.step');
+    const progress = document.getElementById('progress');
+    let currentStep = 0;
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle('active', i === index);
+      });
+      progress.style.width = `${((index + 1) / steps.length) * 100}%`;
+    }
+
+    function validateStep() {
+      const currentInputs = steps[currentStep].querySelectorAll('input, select, textarea');
+      for (let input of currentInputs) {
+        if (!input.checkValidity()) {
+          input.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function nextStep() {
+      if (!validateStep()) return;
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
     document.getElementById('vendorForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Form submitted! (You can connect this to a backend or Google Sheets later.)');
+      document.getElementById('confirmationModal').style.display = 'flex';
       this.reset();
+      currentStep = 0;
+      showStep(currentStep);
+    });
+
+    showStep(currentStep);
+
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+
+    document.getElementById('social').addEventListener('blur', function(e) {
+      let val = e.target.value.trim();
+      if (val && !val.startsWith('http') && !val.startsWith('@')) {
+        e.target.value = '@' + val;
+      }
     });
   </script>
 </body>
