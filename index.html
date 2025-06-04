@@ -2,123 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clarkston Summer Market</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="css/index.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRC Wireless</title>
+    <link href="css/index.css" rel="stylesheet"/>
 </head>
 <body>
   <header>
-    <div class="nav">
-      <img src="images/IMG_0018 (1).png" alt="CRCWireless Logo">
-      <div class="nav-links">
+    <div class="overlay"></div>
+    <nav>
+      <div class="nav-left">
+        <h1>CRC Wireless</h1>
+        <a href="#">Events</a>
         <a href="#about">About</a>
-        <a href="#activities">What to Expect</a>
-        <a href="#faq">FAQ</a>
-        <a href="#sponsors">Sponsors</a>
-        <a href="/vendor">Vendor Signup</a>
+        <a href="#">Vendor</a>
+        <a href="#">Contact</a>
       </div>
+      <div class="nav-right">
+        <a href="#" class="button">RSVP Application</a>
+        <a href="#">Vendor Application</a>
+        <select>
+          <option>English</option>
+          <option>Español</option>
+        </select>
+      </div>
+    </nav>
+    <div class="header-content">
+      <h1>Welcome to CRC Wireless</h1>
+      <p>Broken? We fix it.</p>
+      <a href="#quote" class="cta">Get a quote</a>
     </div>
   </header>
 
-  <section class="hero">
-    <h1>Clarkston Summer Market</h1>
-    <p>Join us for a vibrant one-day celebration of community, culture, and summer fun. All are welcome!</p>
-    <a href="/vendor">Become a Vendor</a>
-    <div class="black-friday-timer">
-      <div class="time-item"><div id="days">00</div><p>Days</p></div>
-      <span class="colon">:</span>
-      <div class="time-item"><div id="hours">00</div><p>Hours</p></div>
-      <span class="colon">:</span>
-      <div class="time-item"><div id="minutes">00</div><p>Minutes</p></div>
-      <span class="colon">:</span>
-      <div class="time-item"><div id="seconds">00</div><p>Seconds</p></div>
+</div>
+</header>
+
+<section id="quote" style="height: auto; background: white; color: black; padding: 50px;">
+  <h2 style="font-size: 2rem;">Get a Quote</h2>
+  <p>Choose your device model and issue below.</p>
+
+  <div class="quote-box">
+    <label for="device-type">Device Brand:</label>
+    <select id="device-type">
+      <option value="">-- Select Brand --</option>
+      <option value="iPhone">iPhone</option>
+      <option value="Samsung">Samsung</option>
+      <option value="Other Phone">Other Phone</option>
+      <option value="Laptop">Laptop</option>
+      <option value="Desktop">Desktop</option>
+    </select>
+
+    <label for="model">Model:</label>
+    <select id="model" disabled>
+      <option value="">-- Select Model --</option>
+    </select>
+
+    <label for="repair">Repair Type:</label>
+    <select id="repair" disabled>
+      <option value="">-- Select Repair --</option>
+    </select>
+
+    <div id="price-display" class="price-box" style="margin-top: 20px;"></div>
+  </div>
+</section>
+<section class="services-preview">
+  <h2>What We Fix</h2>
+  <div class="services-grid">
+    <div class="service-item">
+      <span class="icon">📱</span>
+      <span>Cracked Screens</span>
     </div>
-  </section>
+    <div class="service-item">
+      <span class="icon">🔋</span>
+      <span>Battery Replacements</span>
+    </div>
+    <div class="service-item">
+      <span class="icon">🔌</span>
+      <span>Charging Ports</span>
+    </div>
+    <div class="service-item">
+      <span class="icon">💧</span>
+      <span>Water Damage</span>
+    </div>
+    <div class="service-item">
+      <span class="icon">💻</span>
+      <span>Mac & Windows Laptops</span>
+    </div>
+  </div>
+</section>
 
-  <section class="section" id="about">
-    <h2>About the Market</h2>
-    <p>The Clarkston Summer Market is a community-driven event bringing together families, friends, and neighbors to celebrate culture, diversity, and creativity in the heart of Clarkston.</p>
-  </section>
 
-  <section class="section" id="activities">
-    <h2>What to Expect</h2>
-    <div class="grid">
-      <div class="card">
-        <strong>Live Performances</strong>
-        <p>Enjoy music, dance, and spoken word performances from local talent.</p>
-      </div>
-      <div class="card">
-        <strong>Food Trucks</strong>
-        <p>Sample delicious food from a range of cultures and cuisines.</p>
-      </div>
-      <div class="card">
-        <strong>Games & Activities</strong>
-        <p>Family-friendly fun including games, raffles, and interactive booths.</p>
+<section id="about" class="about-section">
+  <div class="about-wrapper">
+    <img src="images/DSC01222.JPG" alt="CRC Storefront" class="about-photo" />
+    <div class="about-content">
+      <h2>About CRC Wireless</h2>
+      <p>
+        CRC Wireless is your local phone and computer repair shop based in Clarkston, Georgia. Whether your iPhone screen is cracked, your laptop needs a new battery, or your desktop just won’t boot — we’ve got your back.
+      </p>
+      <p>
+        But CRC isn’t just about devices — it’s about community. We proudly support local businesses through events like the <strong>Clarkston Summer Market</strong>, creating opportunities for growth and connection.
+      </p>
+      <p>
+        Fast. Fair. Local. Trusted by Clarkston for quality repairs that last.
+      </p>
+      <a href="#quote" class="about-cta">Get a Quote</a>
+    </div>
+  </div>
+</section>
+<div class="doodle">
+<section class="locations-section">
+  <h2>Our Location</h2>
+  <div class="locations-grid">
+
+    <div class="location-card">
+      <h3>CRC Wireless – Clarkston</h3>
+      <p class="address">
+        926 Montreal Rd, Suite 16<br />
+        Clarkston, GA 30021
+      </p>
+
+      <a href="#" class="location-link">Click here for hours</a>
+      <a href="#quote" class="order-button">Get a Quote</a>
+
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.2513980746134!2d-84.24001102429973!3d33.80868602876412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a5a5c865fbed%3A0x2a0f3a5217a1e1a3!2s926%20Montreal%20Rd%20Suite%2016%2C%20Clarkston%2C%20GA%2030078!5e0!3m2!1sen!2sus!4v1717523686281!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
-  </section>
 
-  <section class="section" id="faq">
-    <h2>FAQ</h2>
-    <div class="grid">
-      <div class="card">
-        <strong>Is it free to attend?</strong>
-        <p>Yes, this event is completely free for the public!</p>
-      </div>
-      <div class="card">
-        <strong>Where is it located?</strong>
-        <p>Clarkston City Center — full details will be posted on our socials.</p>
-      </div>
-      <div class="card">
-        <strong>How can I volunteer?</strong>
-        <p>We love volunteers! <a href="mailto:info@crcwireless.com">Email us</a> to sign up.</p>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="sponsors">
-    <h2>Our Sponsors</h2>
-    <div class="grid">
-      <div class="card">
-        <strong>CRCWireless</strong>
-        <p>Proudly supporting community engagement and connection.</p>
-      </div>
-      <div class="card">
-        <strong>Your Business Here</strong>
-        <p>Interested in becoming a sponsor? <a href="mailto:info@crcwireless.com">Reach out to us</a>.</p>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Clarkston Summer Market</p>
-    <p>Contact: info@crcwireless.com | (404) 555-1234</p>
-    <p>Follow us: @ClarkstonMarket on Instagram & Facebook</p>
-    <p><a href="mailto:info@crcwireless.com">Sign up to volunteer</a></p>
-  </footer>
 
-  <script>
-    const countdownDate = new Date("July 19, 2025 00:00:00").getTime();
-    const countdown = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      if (distance < 0) {
-        clearInterval(countdown);
-        ["days", "hours", "minutes", "seconds"].forEach(id => {
-          document.getElementById(id).textContent = "00";
-        });
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("days").textContent = String(days).padStart(2, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-    }, 1000);
-  </script>
+<script src="js/quote.js"></script>
+
 </body>
 </html>
