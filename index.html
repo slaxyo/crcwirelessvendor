@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarkston Summer Market Vendor Sign-Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background: #2c7be5;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #1a5fd0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Clarkston Summer Market Vendor Sign-Up</h1>
+    <form id="vendorForm">
+      <label for="vendorName">Vendor/Business Name</label>
+      <input type="text" id="vendorName" name="vendorName" required />
+
+      <label for="contactName">Contact Name</label>
+      <input type="text" id="contactName" name="contactName" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="vendorType">Type of Vendor</label>
+      <select id="vendorType" name="vendorType" required>
+        <option value="">Select one</option>
+        <option value="food">Food Vendor ($50)</option>
+        <option value="non-food">Non-Food Vendor ($30)</option>
+      </select>
+
+      <label for="description">Brief Description of What You're Selling</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+
+      <label for="power">Do you need power?</label>
+      <select id="power" name="power" required>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+
+      <label for="table">Will you bring your own table?</label>
+      <select id="table" name="table" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <label for="social">Instagram or Website (optional)</label>
+      <input type="url" id="social" name="social" />
+
+      <label for="notes">Additional Notes (optional)</label>
+      <textarea id="notes" name="notes" rows="3"></textarea>
+
+      <label>
+        <input type="checkbox" required />
+        I understand and agree to the vendor fee listed above.
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('vendorForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Form submitted! (You can connect this to a backend or Google Sheets later.)');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
