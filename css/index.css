@@ -651,3 +651,58 @@ select {
   font-size: 24px;
   text-decoration: none;
 }
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-left, .nav-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-left a, .nav-right a {
+    padding: 10px 0;
+  }
+}
+@media (max-width: 480px) {
+  .quote-box {
+    width: 90%;
+    padding: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .services-grid,
+  .vendors-grid,
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .about-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-photo {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+}
