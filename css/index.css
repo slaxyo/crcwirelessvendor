@@ -706,3 +706,131 @@ select {
     justify-content: center;
   }
 }
+/* Quote Section Container */
+#quote {
+  background: white;
+  color: black;
+  padding: 50px;
+}
+
+/* Headings */
+#quote h2,
+#quote p {
+  text-align: center;
+}
+
+/* Quote Box Styling */
+.quote-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 40px auto;
+  max-width: 400px;
+  background: #e6f0ff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Labels */
+.quote-box label {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #0d1b2a;
+  text-align: center;
+}
+
+/* Input Fields */
+.quote-box input[type="text"],
+.quote-box input[type="tel"] {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 2px solid #ccc;
+  background: white;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  color: #0d1b2a;
+  font-weight: bold;
+  appearance: none;
+}
+
+/* Placeholder Styling */
+.quote-box input[type="text"]::placeholder,
+.quote-box input[type="tel"]::placeholder {
+  color: #999;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* Input Focus Effects */
+.quote-box input[type="text"]:focus,
+.quote-box input[type="tel"]:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 0 2px rgba(0, 74, 173, 0.1);
+}
+
+/* Select Fields */
+.quote-box select {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 2px solid #ccc;
+  background: white;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s;
+  color: #004aad;
+  font-weight: bold;
+  text-align: center;
+  text-align-last: center; /* for some browsers */
+}
+
+/* Select Focus Effects */
+.quote-box select:focus {
+  border-color: #004aad;
+}
+
+/* Price Display */
+.price-box {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #004aad;
+  text-align: center;
+  padding-top: 10px;
+}
+
+/* Submit Button */
+.quote-submit {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 999px;
+  background-color: #004aad;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.quote-submit:hover:enabled {
+  background-color: #003a85;
+}
+
+.quote-submit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .quote-box {
+    width: 90%;
+    padding: 20px;
+  }
+}

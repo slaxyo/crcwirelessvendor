@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/dashboard.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="CRC Wireless - Your local phone and computer repair shop in Clarkston, GA. Fast, fair, and trusted repairs for all your devices.">
+    <meta name="keywords" content="phone repair, computer repair, Clarkston, Georgia, iPhone repair, Samsung repair, laptop repair, desktop repair">
+    <meta name="author" content="CRC Wireless">
+</head>
+<body>
+      <div class="login" id="login">
+    <h2>Enter Password to Access Dashboard</h2>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="checkPassword()">Access</button>
+  </div>
+<div id="quoteSection" class="table-wrapper" style="margin-top: 40px; display: none;">
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">CRC Wireless</div>
+    <nav>
+      <a href="dashboard.html">Vendors</a>
+      <a href="quotes.html" class="active">Quotes</a>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <h2>Quote Submissions</h2>
+    <div class="card">
+      <table id="quoteTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Repair</th>
+        <th>Price</th>
+        <th>Submitted</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+
+   </main>
+
+    
+<div class="modal" id="quoteEditModal" style="display: none;">
+  <div class="modal-content">
+    <h3>Edit Quote</h3>
+    <input type="text" id="editQuoteName" placeholder="Name" />
+    <input type="text" id="editQuotePhone" placeholder="Phone" />
+    <input type="text" id="editQuoteModel" placeholder="Model" />
+    <input type="text" id="editQuoteRepair" placeholder="Repair" />
+    <input type="text" id="editQuotePrice" placeholder="Price" />
+    <button onclick="saveQuoteEdit()">Save Changes</button>
+    <button onclick="closeQuoteModal()">Cancel</button>
+  </div>
+</div>
+ 
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

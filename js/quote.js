@@ -1,126 +1,219 @@
-const data = {
-  iPhone: {
-    "iPhone XR": { price: "$70 - $130", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 11": { price: "$70 - $150", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 11 Pro": { price: "$100 - $160", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 11 Pro Max": { price: "$110 - $170", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 12": { price: "$100 - $170", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 12 Mini": { price: "$95 - $160", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 12 Pro": { price: "$110 - $180", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 12 Pro Max": { price: "$120 - $190", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 13": { price: "$110 - $180", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 13 Mini": { price: "$105 - $170", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 13 Pro": { price: "$120 - $190", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 13 Pro Max": { price: "$130 - $200", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 14": { price: "$120 - $200", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 14 Plus": { price: "$130 - $210", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 14 Pro": { price: "$140 - $220", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 14 Pro Max": { price: "$150 - $240", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 15": { price: "$130 - $220", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 15 Plus": { price: "$140 - $230", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 15 Pro": { price: "$160 - $250", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 15 Pro Max": { price: "$170 - $270", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 16": { price: "$180 - $280", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 16 Plus": { price: "$190 - $290", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 16 Pro": { price: "$200 - $310", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "iPhone 16 Pro Max": { price: "$210 - $320", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] }
-  },
+// === CONFIG ===
+const PASSWORD = "market2024";
+const COOKIE_KEY = "auth";
+const COOKIE_VALUE = PASSWORD;
 
-  Samsung: {
-    "Galaxy S10": { price: "$80 - $140", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S10+": { price: "$90 - $150", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S10e": { price: "$80 - $130", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S20": { price: "$100 - $170", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S20+": { price: "$110 - $180", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S20 Ultra": { price: "$120 - $200", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S20 FE": { price: "$95 - $160", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S21": { price: "$110 - $180", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S21+": { price: "$120 - $190", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S21 Ultra": { price: "$130 - $210", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S21 FE": { price: "$100 - $170", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S22": { price: "$120 - $190", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S22+": { price: "$130 - $200", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S22 Ultra": { price: "$140 - $220", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S23": { price: "$130 - $200", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S23+": { price: "$140 - $210", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S23 Ultra": { price: "$150 - $230", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S24": { price: "$140 - $220", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S24+": { price: "$150 - $230", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S24 Ultra": { price: "$160 - $250", repairs: ["Screen Replacement", "Battery", "Charging Port", "Back Glass", "Water Damage"] },
-    "Galaxy S25": { price: "TBD", repairs: ["TBD"] },
-    "Galaxy S25+": { price: "TBD", repairs: ["TBD"] },
-    "Galaxy S25 Ultra": { price: "TBD", repairs: ["TBD"] }
-  },
+const SUPABASE_URL = "https://stgcknunpvlcndtwxdmc.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0Z2NrbnVucHZsY25kdHd4ZG1jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkwNTM2MTUsImV4cCI6MjA2NDYyOTYxNX0.H2JawYsroeA5Tnc_iIeGhRX0kLcUIk0bP3F7rK0JyX4";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  "Other Phone": {
-    "Samsung (A Series | Please contact us)": { price: "ERROR | PLEASE CALL US: (404) 528-8830", repairs: ["Screen Replacement", "Battery", "Charging Port", "Water Damage"] }
-  },
+// === GLOBALS ===
+let currentEditId = null;
+let currentQuoteId = null;
 
-  Laptop: {
-    "Windows Laptop": { price: "$70 - $200", repairs: ["Screen", "Battery", "Keyboard", "Software", "Other"] },
-    "MacBook Air": { price: "$100 - $250", repairs: ["Screen", "Battery", "Keyboard", "Trackpad", "Software"] },
-    "MacBook Pro": { price: "$120 - $300", repairs: ["Screen", "Battery", "Keyboard", "Trackpad", "Software"] }
-  },
+// === ONLOAD ===
+window.onload = function () {
+  const isAuthed = document.cookie.split("; ").find((row) => row.startsWith(`${COOKIE_KEY}=`));
+  if (!isAuthed) return;
 
-  Desktop: {
-    "Windows Desktop": { price: "$80 - $300", repairs: ["Power Supply", "Hard Drive", "Software", "Other"] },
-    "iMac": { price: "$100 - $320", repairs: ["Screen", "Power Supply", "Software", "Other"] }
-  }
+  const login = document.getElementById("login");
+  const dashboard = document.getElementById("dashboard");
+  const quoteSection = document.getElementById("quoteSection");
+
+  if (login) login.style.display = "none";
+  if (dashboard) dashboard.style.display = "block";
+  if (quoteSection) quoteSection.style.display = "block";
+
+  if (document.querySelector("#vendorTable")) loadVendors();
+  if (document.querySelector("#quoteTable")) loadQuotes();
 };
 
+// === AUTH ===
+function setAuthCookie() {
+  document.cookie = `${COOKIE_KEY}=${COOKIE_VALUE}; path=/; max-age=86400`;
+}
 
-const deviceTypeSelect = document.getElementById('device-type');
-const modelSelect = document.getElementById('model');
-const repairSelect = document.getElementById('repair');
-const priceDisplay = document.getElementById('price-display');
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  if (input === PASSWORD) {
+    setAuthCookie();
+    document.getElementById("login")?.style.setProperty("display", "none");
+    document.getElementById("dashboard")?.style.setProperty("display", "block");
+    document.getElementById("quoteSection")?.style.setProperty("display", "block");
 
-deviceTypeSelect.addEventListener('change', () => {
-  const brand = deviceTypeSelect.value;
-  modelSelect.innerHTML = '<option value="">-- Select Model --</option>';
-  repairSelect.innerHTML = '<option value="">-- Select Repair --</option>';
-  repairSelect.disabled = true;
-  priceDisplay.textContent = '';
-
-  if (data[brand]) {
-    modelSelect.disabled = false;
-    Object.keys(data[brand]).forEach(model => {
-      const option = document.createElement('option');
-      option.value = model;
-      option.textContent = model;
-      modelSelect.appendChild(option);
-    });
+    if (document.querySelector("#vendorTable")) loadVendors();
+    if (document.querySelector("#quoteTable")) loadQuotes();
   } else {
-    modelSelect.disabled = true;
+    alert("Incorrect password.");
   }
-});
+}
 
-modelSelect.addEventListener('change', () => {
-  const brand = deviceTypeSelect.value;
-  const model = modelSelect.value;
-  repairSelect.innerHTML = '<option value="">-- Select Repair --</option>';
-  priceDisplay.textContent = '';
+// === VENDORS ===
+async function loadVendors() {
+  const { data, error } = await supabaseClient.from("vendors").select("*");
+  if (error) return console.error("Load error:", error);
 
-  if (data[brand] && data[brand][model]) {
-    const repairs = data[brand][model].repairs;
-    repairSelect.disabled = false;
-    repairs.forEach(repair => {
-      const option = document.createElement('option');
-      option.value = repair;
-      option.textContent = repair;
-      repairSelect.appendChild(option);
-    });
-  } else {
-    repairSelect.disabled = true;
-  }
-});
+  const tbody = document.querySelector("#vendorTable tbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
 
-repairSelect.addEventListener('change', () => {
-  const brand = deviceTypeSelect.value;
-  const model = modelSelect.value;
+  let total = 0;
+  let checkedIn = 0;
 
-  if (data[brand] && data[brand][model]) {
-    priceDisplay.textContent = `Estimated Price: ${data[brand][model].price}`;
-  } else {
-    priceDisplay.textContent = '';
-  }
-});
+  data.forEach((v) => {
+    total++;
+    if (v.checkedIn) checkedIn++;
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td colspan="11">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <strong>${v.vendorName}</strong> — ${v.vendorType}<br>
+            <small>Contact:</small> ${v.contactName} <br> Phone: ${v.phone} <br> Email: ${v.email}<br>
+            <small>Setup:</small> ${v.setupTime} <br> Power: ${v.power} <br> Table: ${v.table}<br>
+            <small>Description:</small> ${v.description}<br>
+            ${v.social ? `<small>Social:</small> ${v.social}<br>` : ""}
+            <span class="note-toggle" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">Toggle Notes</span>
+            <div class="hidden-note">${v.notes || ""}</div>
+          </div>
+          <div style="min-width: 140px; text-align: right;">
+            <button onclick="toggleCheckIn(${v.id}, ${v.checkedIn})" ${v.checkedIn ? 'class="checked-in"' : ''}>${v.checkedIn ? "Checked In" : "Check In"}</button><br>
+            <button onclick="editVendor(${v.id}, \`${v.vendorName}\`, \`${v.contactName}\`, \`${v.phone}\`, \`${v.email}\`, \`${v.notes || ""}\`)" style="margin-top: 6px;">Edit</button>
+            <button onclick="deleteVendor(${v.id})">Delete</button>
+          </div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  const stats = document.getElementById("vendorStats");
+  if (stats) stats.textContent = `Total Vendors: ${total} | Checked In: ${checkedIn} | Not Checked In: ${total - checkedIn}`;
+}
+
+async function toggleCheckIn(id, currentStatus) {
+  const { error } = await supabaseClient.from("vendors").update({ checkedIn: !currentStatus }).eq("id", id);
+  if (error) return alert("Failed to update check-in status");
+  loadVendors();
+}
+
+async function deleteVendor(id) {
+  if (!confirm("Are you sure you want to delete this vendor?")) return;
+  const { error } = await supabaseClient.from("vendors").delete().eq("id", id);
+  if (error) return alert("Failed to delete.");
+  loadVendors();
+}
+
+function editVendor(id, name, contact, phone, email, notes) {
+  currentEditId = id;
+  document.getElementById("editName").value = name;
+  document.getElementById("editContact").value = contact;
+  document.getElementById("editPhone").value = phone;
+  document.getElementById("editEmail").value = email;
+  document.getElementById("editNotes").value = notes;
+  document.getElementById("editModal").style.display = "flex";
+}
+
+function closeEditModal() {
+  document.getElementById("editModal").style.display = "none";
+}
+
+async function saveEdit() {
+  const updatedData = {
+    vendorName: document.getElementById("editName").value,
+    contactName: document.getElementById("editContact").value,
+    phone: document.getElementById("editPhone").value,
+    email: document.getElementById("editEmail").value,
+    notes: document.getElementById("editNotes").value
+  };
+  const { error } = await supabaseClient.from("vendors").update(updatedData).eq("id", currentEditId);
+  if (error) return alert("Update failed");
+  closeEditModal();
+  loadVendors();
+}
+
+// === QUOTES ===
+async function loadQuotes() {
+  const { data, error } = await supabaseClient.from("quotes").select("*").order("submitted_at", { ascending: false });
+  if (error) return console.error("Quote load error:", error);
+
+  const tbody = document.querySelector("#quoteTable tbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
+
+  data.forEach((q) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${q.name}</td>
+      <td>${q.phone}</td>
+      <td>${q.brand}</td>
+      <td>${q.model}</td>
+      <td>${q.repair}</td>
+      <td>${q.price}</td>
+      <td>${new Date(q.submitted_at).toLocaleString()}</td>
+      <td>
+        <button onclick="markContacted(${q.id}, this)" class="contact-btn">Contacted</button>
+        <button onclick="editQuote(${q.id})">Edit</button>
+        <button onclick="deleteQuote(${q.id})">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+async function markContacted(id, btn) {
+  btn.disabled = true;
+  btn.classList.add("contacted");
+  btn.textContent = "Contacted ✔";
+
+  const now = new Date();
+  const removeAfter = new Date(now.getTime() + 14 * 24 * 60 * 60 * 1000);
+  const { error } = await supabaseClient.from("quotes").update({
+    contacted: true,
+    remove_at: removeAfter.toISOString()
+  }).eq("id", id);
+
+  if (error) alert("Failed to update quote status");
+}
+
+async function deleteQuote(id) {
+  if (!confirm("Delete this quote?")) return;
+  const { error } = await supabaseClient.from("quotes").delete().eq("id", id);
+  if (error) alert("Failed to delete quote");
+  else loadQuotes();
+}
+
+async function editQuote(id) {
+  currentQuoteId = id;
+  const { data, error } = await supabaseClient.from("quotes").select("*").eq("id", id).single();
+  if (error) return alert("Failed to fetch quote.");
+
+  document.getElementById("editQuoteName").value = data.name;
+  document.getElementById("editQuotePhone").value = data.phone;
+  document.getElementById("editQuoteModel").value = data.model;
+  document.getElementById("editQuoteRepair").value = data.repair;
+  document.getElementById("editQuotePrice").value = data.price;
+
+  document.getElementById("quoteEditModal").style.display = "flex";
+}
+
+function closeQuoteEditModal() {
+  document.getElementById("quoteEditModal").style.display = "none";
+}
+
+async function saveQuoteEdit() {
+  const updated = {
+    name: document.getElementById("editQuoteName").value,
+    phone: document.getElementById("editQuotePhone").value,
+    model: document.getElementById("editQuoteModel").value,
+    repair: document.getElementById("editQuoteRepair").value,
+    price: document.getElementById("editQuotePrice").value
+  };
+
+  const { error } = await supabaseClient.from("quotes").update(updated).eq("id", currentQuoteId);
+  if (error) return alert("Update failed.");
+
+  closeQuoteEditModal();
+  loadQuotes();
+}

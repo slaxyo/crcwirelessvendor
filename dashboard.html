@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clarkston Vendor Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-    <link href="/css/dashboard.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -14,7 +14,16 @@
     <input type="password" id="password" placeholder="Enter password" />
     <button onclick="checkPassword()">Access</button>
   </div>
-
+<div id="quoteSection" class="table-wrapper" style="margin-top: 40px; display: none;">
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">CRC Wireless</div>
+    <nav>
+      <a href="dashboard.html">Vendors</a>
+      <a href="quotes.html">Quotes</a>
+      <!-- future: <a href="#">Messages</a> -->
+    </nav>
+  </aside>
   <div class="container" id="dashboard" style="display:none">
     <img class="logo" src="images/IMG_0018 (1).png" alt="CRCWireless Logo">
     <h1>Vendor Submissions</h1>
@@ -42,6 +51,6 @@
     </div>
   </div>
 
-  <script src="/js/dashboard.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

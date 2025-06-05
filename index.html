@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CRC Wireless</title>
-    <link href="https://crcwireless.com/css/index.css" rel="stylesheet"/>
+    <link href="css/index.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+  <meta name="description" content="CRC Wireless - Your local phone and computer repair shop in Clarkston, GA. Fast, fair, and trusted repairs for all your devices."/>
+  <meta name="keywords" content="phone repair, computer repair, Clarkston, Georgia, iPhone repair, Samsung repair, laptop repair, desktop repair"/>
+  <meta name="author" content="CRC Wireless"/>
+
+
 </head>
 <body>
   <header>
@@ -39,7 +47,15 @@
   <h2 style="font-size: 2rem;">Get a Quote</h2>
   <p>Choose your device model and issue below.</p>
 
-  <div class="quote-box">
+<div class="quote-box">
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" name="name" required placeholder="John Doe" />
+
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" class="quote-input" name="phone" required placeholder="(404) 555-1234" />
+
+
+
     <label for="device-type">Device Brand:</label>
     <select id="device-type">
       <option value="">-- Select Brand --</option>
@@ -59,6 +75,7 @@
     <select id="repair" disabled>
       <option value="">-- Select Repair --</option>
     </select>
+<button id="submit-quote" class="quote-submit">Submit Quote</button>
 
     <div id="price-display" class="price-box" style="margin-top: 20px;"></div>
   </div>
