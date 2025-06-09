@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     const POS_API_KEY = 'YOUR_REAL_KEY_HERE'; // Replace this
-    const POS_API_URL = `https://mapwireless.phppointofsale.com/index.php/api/v1/customers?key=${POS_API_KEY}`;
+    const POS_API_URL = `https://mapwireless.phppointofsale.com/index.php/api/v1/customers?key=${s8o088s48g4w0ks88sw8okwsco4o88o004k0cw4g}`;
 
     const payload = {
       first_name: req.body.first_name,
