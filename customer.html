@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRC Wireless - Customer Intake</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="css/dashboard.css" rel="stylesheet" />
+  <link href="css/customer.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">CRC Wireless</div>
+      <nav>
+        <a href="dashboard.html">Vendors</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="intake.html" class="active">Intake</a>
+                <a href="workorder.html">Work Order</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <form id="intakeForm" class="form-cards">
+
+        <!-- Device Information -->
+<div class="form-section">
+  <h3>📱 Device Information</h3>
+  <div class="grid-2">
+    <div class="field-group">
+      <label>Manufacturer</label>
+      <div class="radio-group">
+        <label><input type="radio" name="manufacturer" value="Apple" /> Apple</label>
+        <label><input type="radio" name="manufacturer" value="Samsung" /> Samsung</label>
+        <label><input type="radio" name="manufacturer" value="Motorola" /> Motorola</label>
+      </div>
+      <input type="text" name="manufacturer" placeholder="Other (Please Specify)" />
+    </div>
+    <div class="field-group">
+      <label for="model">Phone Model</label>
+      <input type="text" id="model" name="model" />
+    </div>
+  </div>
+
+  <div class="field-group">
+    <label for="imei">IMEI (optional)</label>
+    <div class="imei-row">
+      <input type="text" id="imei" name="imei" placeholder="Scan or enter IMEI" />
+      <button type="button" onclick="startImeiScan()">📷</button>
+    </div>
+    <div id="scanner" style="width: 100%; max-width: 320px; margin-top: 10px;"></div>
+  </div>
+</div>
+
+
+        <!-- Device Issues -->
+        <div class="form-section">
+          <h3>🛠️ Device Issues</h3>
+          <div class="checkbox-group">
+  <label><input type="checkbox" name="issue[]" value="Broken Digitizer"> Cracked Screen</label>
+  <label><input type="checkbox" name="issue[]" value="Broken LCD"> Broken LCD</label>
+  <label><input type="checkbox" name="issue[]" value="Broken Chargeport"> Charging Port</label>
+  <label><input type="checkbox" name="issue[]" value="Battery Replacement"> Battery Replacement</label>
+</div>
+
+<input type="text" name="issue[]" placeholder="Other (Please Specify)">
+
+
+          <label for="symptoms">🔍 Errors & Symptoms</label>
+          <textarea id="symptoms" name="symptoms" placeholder="What did the customer experience? (Optional)"></textarea>
+        </div>
+
+        <!-- Customer Info -->
+        <div class="form-section">
+          <h3>🙋 Customer Info</h3>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required>
+
+          <label for="password">Device Password (if any)</label>
+          <input type="text" id="password" name="password">
+        </div>
+
+        <!-- Repair Status -->
+        <div class="form-section">
+          <h3>📦 Repair Status</h3>
+          <label for="status">Repair Status</label>
+          <select id="status" name="status">
+            <option value="Received">Received</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Waiting for Parts">Waiting for Parts</option>
+            <option value="Ready for Pickup">Ready for Pickup</option>
+            <option value="Picked Up">Picked Up</option>
+          </select>
+
+          <label for="notes">💰 Amount + Paid/Unpaid</label>
+          <input id="notes" name="notes" type="text">
+        </div>
+
+        <button type="submit">✅ Submit Intake</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/customer.js"></script>
+  <script>
+    function startImeiScan() {
+      const scanner = new Html5Qrcode("scanner");
+      scanner.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        (decodedText) => {
+          document.getElementById("imei").value = decodedText;
+          scanner.stop();
+          document.getElementById("scanner").innerHTML = "";
+        },
+        (errorMessage) => {
+          // Ignore errors
+        }
+      ).catch(err => {
+        console.error("Scanner start error", err);
+      });
+    }
+  </script>
+</body>
+</html>

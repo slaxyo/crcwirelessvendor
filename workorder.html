@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Orders - CRC Wireless</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/workorder.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">CRC Wireless</div>
+      <nav>
+        <a href="dashboard.html">Vendors</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="intake.html">Intake</a> 
+       <a href="workorder.html" class="active">Work Orders</a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <h2>📋 Customer Work Orders</h2>
+
+      <!-- Filter Buttons -->
+      <div class="status-filters">
+        <button class="filter-btn active" data-status="All">All</button>
+        <button class="filter-btn" data-status="Received">📦 Received</button>
+        <button class="filter-btn" data-status="In Progress">🔧 In Progress</button>
+        <button class="filter-btn" data-status="Waiting for Parts">⏳ Waiting</button>
+        <button class="filter-btn" data-status="Ready for Pickup">✅ Ready</button>
+        <button class="filter-btn" data-status="Picked Up">✔️ Picked Up</button>
+      </div>
+
+      <!-- Work Order Container -->
+      <div id="workOrderContainer" class="work-order-grid"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/workorder.js"></script>
+</body>
+</html>
