@@ -1,6 +1,5 @@
 export default async function handler(req, res) {
-  // Allow requests from any frontend origin — for production, replace * with your domain
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "https://crcwireless.com"); // 👈 replace * with your actual domain
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -9,8 +8,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const POS_API_KEY = 'YOUR_REAL_KEY_HERE'; // Replace this
-    const POS_API_URL = `https://mapwireless.phppointofsale.com/index.php/api/v1/customers?key=${s8o088s48g4w0ks88sw8okwsco4o88o004k0cw4g}`;
+    const POS_API_URL = `https://mapwireless.phppointofsale.com/index.php/api/v1/customers?key=s8o088s48g4w0ks88sw8okwsco4o88o004k0cw4g`;
 
     const payload = {
       first_name: req.body.first_name,
@@ -27,7 +25,6 @@ export default async function handler(req, res) {
         body: JSON.stringify(payload)
       });
 
-      // Parse as JSON if possible, otherwise fallback to plain text
       const contentType = posRes.headers.get('content-type');
       const responseBody = contentType?.includes('application/json')
         ? await posRes.json()
