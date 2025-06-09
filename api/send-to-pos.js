@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "https://crcwireless.com"); // 👈 replace * with your actual domain
+  res.setHeader("Access-Control-Allow-Origin", "https://crcwireless.com");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -8,12 +8,15 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const POS_API_URL = `https://mapwireless.phppointofsale.com/index.php/api/v1/customers?key=s8o088s48g4w0ks88sw8okwsco4o88o004k0cw4g`;
+    const POS_API_KEY = 's8o088s48g4w0ks88sw8okwsco4o88o004k0cw4g'; // use your real one
+    const POS_API_URL = `https://mapwireless.phppointofsale.com/index.php/api/v1/customers?key=${POS_API_KEY}`;
 
     const payload = {
-      first_name: req.body.first_name,
-      phone_number: req.body.phone_number,
-      comments: req.body.comments
+      first_name: req.body.first_name || "Test",
+      last_name: "CRC", // Required field for many installs
+      phone_number: req.body.phone_number || "",
+      email: "no-reply@crcwireless.com", // Optional but recommended
+      comments: req.body.comments || ""
     };
 
     try {
