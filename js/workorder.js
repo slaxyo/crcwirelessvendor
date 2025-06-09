@@ -22,7 +22,6 @@ function renderOrders(filter) {
   allOrders
     .filter(order => filter === 'All' || order.status === filter)
     .forEach(order => {
-      // Safely format issues whether it's array, string, or null
       const issueText = Array.isArray(order.issues)
         ? order.issues.join(', ')
         : (typeof order.issues === 'string' ? order.issues : 'N/A');
@@ -31,6 +30,7 @@ function renderOrders(filter) {
       card.className = 'work-order-card';
       card.dataset.status = order.status;
 
+      // Create static inner content
       card.innerHTML = `
         <div class="card-header">
           <h4>${order.model || 'Unknown Model'} – ${order.name || 'No Name'}</h4>
@@ -40,16 +40,39 @@ function renderOrders(filter) {
         <p><strong>Phone:</strong> ${order.phone || 'N/A'}</p>
         <p><strong>Notes:</strong> ${order.notes || '—'}</p>
         <div class="card-actions">
-          <select onchange="updateStatus('${order.id}', this.value)">
+          <select class="status-select">
             ${['Received', 'In Progress', 'Waiting for Parts', 'Ready for Pickup', 'Picked Up'].map(status => `
               <option value="${status}" ${order.status === status ? 'selected' : ''}>${status}</option>
             `).join('')}
           </select>
-          <button onclick="editOrder('${order.id}')">✏️ Edit</button>
-          <button onclick="deleteOrder('${order.id}')">🗑️ Delete</button>
-          <button onclick="takePayment('${order.name}', '${order.phone}', \`${issueText}\`)">💵 Take Payment</button>
+          <button class="edit-btn">✏️ Edit</button>
+          <button class="delete-btn">🗑️ Delete</button>
         </div>
       `;
+
+      // Add payment button separately (so we can attach event properly)
+      const payBtn = document.createElement('button');
+      payBtn.textContent = '💵 Take Payment';
+      payBtn.addEventListener('click', () => {
+        takePayment(order.name, order.phone, issueText);
+      });
+
+      // Attach button to .card-actions
+      card.querySelector('.card-actions').appendChild(payBtn);
+
+      // Hook up dropdown and action buttons
+      card.querySelector('.status-select').addEventListener('change', (e) => {
+        updateStatus(order.id, e.target.value);
+      });
+
+      card.querySelector('.edit-btn').addEventListener('click', () => {
+        editOrder(order.id);
+      });
+
+      card.querySelector('.delete-btn').addEventListener('click', () => {
+        deleteOrder(order.id);
+      });
+
       container.appendChild(card);
     });
 }
@@ -89,13 +112,27 @@ window.updateStatus = async (id, newStatus) => {
   }
 };
 
-window.takePayment = (name, phone, issue) => {
-  const url = new URL('https://mapwireless.phppointofsale.com');
-  url.searchParams.set('customer', name);
-  url.searchParams.set('phone', phone);
-  url.searchParams.set('issue', issue);
-  window.open(url.toString(), '_blank');
+window.takePayment = async (name, phone, issue) => {
+  const payload = {
+    first_name: name,
+    phone_number: phone,
+    comments: issue
+  };
+
+  const res = await fetch('https://crcwirelessvendor.vercel.app/api/send-to-pos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  const result = await res.json();
+  if (res.ok) {
+    alert('✅ Customer sent to POS!');
+    console.log(result);
+  } else {
+    alert('❌ Failed to send to POS');
+    console.error(result);
+  }
 };
 
-// Start
 loadOrders();
