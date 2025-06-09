@@ -15,6 +15,22 @@ async function loadOrders() {
   allOrders = data;
   renderOrders('All');
 }
+function getStatusLabel(status) {
+  switch (status) {
+    case 'Received':
+      return '📦 Received';
+    case 'In Progress':
+      return '🔧 In Progress';
+    case 'Waiting for Parts':
+      return '⏳ Waiting';
+    case 'Ready for Pickup':
+      return '✅ Ready';
+    case 'Picked Up':
+      return '✔️ Picked Up';
+    default:
+      return status;
+  }
+}
 
 function renderOrders(filter) {
   container.innerHTML = '';
@@ -34,11 +50,17 @@ function renderOrders(filter) {
       card.innerHTML = `
         <div class="card-header">
           <h4>${order.model || 'Unknown Model'} – ${order.name || 'No Name'}</h4>
-          <span class="status-badge ${order.status.toLowerCase().replace(/ /g, '-')}">${order.status}</span>
+<span class="status-badge ${order.status.toLowerCase().replace(/ /g, '-')}">
+  ${getStatusLabel(order.status)}
+</span>
+
         </div>
         <p><strong>Issue:</strong> ${issueText}</p>
         <p><strong>Phone:</strong> ${order.phone || 'N/A'}</p>
         <p><strong>Notes:</strong> ${order.notes || '—'}</p>
+        <p><strong>Date Received:</strong> ${order.received_date || '—'}</p>
+<p><strong>Due Date:</strong> ${order.due_date || '—'}</p>
+
         <div class="card-actions">
           <select class="status-select">
             ${['Received', 'In Progress', 'Waiting for Parts', 'Ready for Pickup', 'Picked Up'].map(status => `
@@ -112,27 +134,9 @@ window.updateStatus = async (id, newStatus) => {
   }
 };
 
-window.takePayment = async (name, phone, issue) => {
-  const payload = {
-    first_name: name,
-    phone_number: phone,
-    comments: issue
-  };
-
-  const res = await fetch('https://crcwirelessvendor.vercel.app/api/send-to-pos', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
-
-  const result = await res.json();
-  if (res.ok) {
-    alert('✅ Customer sent to POS!');
-    console.log(result);
-  } else {
-    alert('❌ Failed to send to POS');
-    console.error(result);
-  }
+window.takePayment = (name, phone, issue) => {
+  window.open('https://mapwireless.phppointofsale.com/index.php/sales', '_blank');
 };
+
 
 loadOrders();

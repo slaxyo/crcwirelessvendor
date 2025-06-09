@@ -196,3 +196,37 @@ p {
     align-items: stretch;
   }
 }
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+  margin-top: 4px;
+  user-select: none;
+}
+
+/* Color-coded statuses */
+.status-badge.received {
+  background-color: #e0f7fa;
+  color: #007b8a;
+}
+.status-badge.in-progress {
+  background-color: #fff3cd;
+  color: #856404;
+}
+.status-badge.waiting-for-parts {
+  background-color: #f8d7da;
+  color: #a94442;
+}
+.status-badge.ready-for-pickup {
+  background-color: #d4edda;
+  color: #155724;
+}
+.status-badge.picked-up {
+  background-color: #e2e3e5;
+  color: #383d41;
+}

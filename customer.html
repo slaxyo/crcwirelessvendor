@@ -100,6 +100,15 @@
           <label for="notes">💰 Amount + Paid/Unpaid</label>
           <input id="notes" name="notes" type="text">
         </div>
+<div class="form-section">
+  <label for="received_date">📥 Date Received</label>
+  <input type="date" id="received_date" name="received_date" required />
+
+
+
+  <label for="due_date">📅 Due Date</label>
+  <input type="date" id="due_date" name="due_date" />
+</div>
 
         <button type="submit">✅ Submit Intake</button>
       </form>
@@ -126,5 +135,19 @@
       });
     }
   </script>
+  <div id="receiptModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>🧾 Customer Receipt</h3>
+    <div id="receiptCustomer" class="receipt"></div>
+
+    <hr />
+
+    <h3>🗃️ Internal Copy</h3>
+    <div id="receiptInternal" class="receipt"></div>
+
+    <button onclick="window.print()">🖨️ Print Both</button>
+  </div>
+</div>
+
 </body>
 </html>
