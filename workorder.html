@@ -6,21 +6,25 @@
   <title>Work Orders - CRC Wireless</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/workorder.css" />
+      <link href="css/passwordlocked.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <div class="dashboard-layout">
-    <aside class="sidebar">
-      <div class="sidebar-header">CRC Wireless</div>
-      <nav>
-        <a href="dashboard.html">Vendors</a>
-        <a href="quotes.html">Quotes</a>
-        <a href="customer.html">Intake</a> 
-       <a href="workorder.html" class="active">Work Orders</a>
-      </nav>
-    </aside>
+  
+<aside class="sidebar">
+  <div class="sidebar-header">CRC Wireless</div>
+  <nav>
+    <a href="dashboard.html"><span>📦</span> <span>Vendors</span></a>
+    <a href="quotes.html"><span>🧾</span> <span>Quotes</span></a>
+    <a href="customer.html"><span>📝</span> <span>Intake</span></a>
+    <a href="workorder.html" class="active"><span>🔧</span> <span>Work Orders</span></a>
+  </nav>
+</aside>
+
 
     <div class="main-content">
+  
+
       <h2>📋 Customer Work Orders</h2>
 
       <!-- Filter Buttons -->
@@ -32,28 +36,37 @@
         <button class="filter-btn" data-status="Ready for Pickup">✅ Ready</button>
         <button class="filter-btn" data-status="Picked Up">✔️ Picked Up</button>
       </div>
-
+    <div class="sort-bar">
+  <label for="sortSelect">Sort By:</label>
+  <select id="sortSelect">
+    <option value="newest">🕒 Newest First</option>
+    <option value="oldest">📅 Oldest First</option>
+    <option value="status">🔧 Status</option>
+    <option value="name">🔤 Name A–Z</option>
+  </select>
+</div>
       <!-- Work Order Container -->
       <div id="workOrderContainer" class="work-order-grid"></div>
     </div>
   </div>
-<div id="receiptModal" class="modal hidden">
-  <div class="receipt-wrapper">
-    <div class="receipt-section customer-receipt">
-      <h3>📋 CRC Wireless – Customer Copy</h3>
-      <pre id="receiptCustomer">Loading...</pre>
-    </div>
 
-    <div class="receipt-section staff-receipt">
-      <h3>🔒 CRC Wireless – Staff Copy</h3>
-      <pre id="receiptInternal">Loading...</pre>
-      <div class="signature-line">Signature: _____________________________</div>
-    </div>
+  <div id="receiptModal" class="modal hidden">
+    <div class="receipt-wrapper">
+      <div class="receipt-section customer-receipt">
+        <h3>📋 CRC Wireless – Customer Copy</h3>
+        <pre id="receiptCustomer">Loading...</pre>
+      </div>
 
-    <button onclick="window.print()">🖨️ Print Receipts</button>
-    <button onclick="document.getElementById('receiptModal').classList.add('hidden')">❌ Close</button>
+      <div class="receipt-section staff-receipt">
+        <h3>🔒 CRC Wireless – Staff Copy</h3>
+        <pre id="receiptInternal">Loading...</pre>
+        <div class="signature-line">Signature: _____________________________</div>
+      </div>
+
+      <button onclick="window.print()">🖨️ Print Receipts</button>
+      <button onclick="document.getElementById('receiptModal').classList.add('hidden')">❌ Close</button>
+    </div>
   </div>
-</div>
 
   <script type="module" src="js/workorder.js"></script>
 </body>

@@ -6,6 +6,7 @@
   <title>Clarkston Vendor Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <link href="css/dashboard.css" rel="stylesheet" />
+        <link href="css/passwordlocked.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -16,16 +17,16 @@
   </div>
 <div id="quoteSection" class="table-wrapper" style="margin-top: 40px; display: none;">
 <div class="dashboard-layout">
-  <aside class="sidebar">
-    <div class="sidebar-header">CRC Wireless</div>
-    <nav>
-      <a href="dashboard.html" class="active">Vendors</a>
-      <a href="quotes.html">Quotes</a>
-         <a href="customer.html">Intake</a>
-         <a href="workorder.html">Work Orders</a>
-      <!-- future: <a href="#">Messages</a> -->
-    </nav>
-  </aside>
+<aside class="sidebar">
+  <div class="sidebar-header">CRC Wireless</div>
+  <nav>
+    <a href="dashboard.html" class="active"><span>📦</span> <span>Vendors</span></a>
+    <a href="quotes.html" ><span>🧾</span> <span>Quotes</span></a>
+    <a href="customer.html"><span>📝</span> <span>Intake</span></a>
+    <a href="workorder.html"><span>🔧</span> <span>Work Orders</span></a>
+  </nav>
+</aside>
+  <div class="main-content">
   <div class="container" id="dashboard" style="display:none">
     <img class="logo" src="images/IMG_0018 (1).png" alt="CRCWireless Logo">
     <h1>Vendor Submissions</h1>
@@ -52,7 +53,7 @@
       <button onclick="closeEditModal()">Cancel</button>
     </div>
   </div>
-
+</div>
   <script src="js/dashboard.js"></script>
 </body>
 </html>

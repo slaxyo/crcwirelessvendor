@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="css/dashboard.css" rel="stylesheet">
+        <link href="css/passwordlocked.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <meta name="description" content="CRC Wireless - Your local phone and computer repair shop in Clarkston, GA. Fast, fair, and trusted repairs for all your devices.">
@@ -17,17 +18,16 @@
     <input type="password" id="password" placeholder="Enter password" />
     <button onclick="checkPassword()">Access</button>
   </div>
-<div id="quoteSection" class="table-wrapper" style="margin-top: 40px; display: none;">
-<div class="dashboard-layout">
-  <aside class="sidebar">
-    <div class="sidebar-header">CRC Wireless</div>
-    <nav>
-      <a href="dashboard.html">Vendors</a>
-      <a href="quotes.html" class="active">Quotes</a>
-            <a href="customer.html">Intake</a>
-            <a href="workorder.html">Work Orders</a>
-    </nav>
-  </aside>
+<aside class="sidebar">
+  <div class="sidebar-header">CRC Wireless</div>
+  <nav>
+    <a href="dashboard.html"><span>📦</span> <span>Vendors</span></a>
+    <a href="quotes.html" class="active"><span>🧾</span> <span>Quotes</span></a>
+    <a href="customer.html"><span>📝</span> <span>Intake</span></a>
+    <a href="workorder.html"><span>🔧</span> <span>Work Orders</span></a>
+  </nav>
+</aside>
+  <div class="main-content">
   <main class="main-content">
     <h2>Quote Submissions</h2>
     <div class="card">
@@ -63,7 +63,7 @@
     <button onclick="closeQuoteModal()">Cancel</button>
   </div>
 </div>
- 
+ </div>
 
 <script src="js/dashboard.js"></script>
 </body>

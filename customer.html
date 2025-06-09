@@ -7,20 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="css/dashboard.css" rel="stylesheet" />
   <link href="css/customer.css" rel="stylesheet" />
+    <link href="css/passwordlocked.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 </head>
 <body>
   <div class="dashboard-layout">
-    <aside class="sidebar">
-      <div class="sidebar-header">CRC Wireless</div>
-      <nav>
-        <a href="dashboard.html">Vendors</a>
-        <a href="quotes.html">Quotes</a>
-        <a href="intake.html" class="active">Intake</a>
-                <a href="workorder.html">Work Order</a>
-      </nav>
-    </aside>
+<aside class="sidebar">
+  <div class="sidebar-header">CRC Wireless</div>
+  <nav>
+    <a href="dashboard.html" ><span>📦</span> <span>Vendors</span></a>
+    <a href="quotes.html" ><span>🧾</span> <span>Quotes</span></a>
+    <a href="customer.html"class="active"><span>📝</span> <span>Intake</span></a>
+    <a href="workorder.html"><span>🔧</span> <span>Work Orders</span></a>
+  </nav>
+</aside>
 
     <div class="main-content">
       <form id="intakeForm" class="form-cards">
