@@ -376,3 +376,41 @@ button:hover {
     display: none !important;
   }
 }
+@media print {
+  * {
+    visibility: hidden;
+  }
+
+  #receiptModal, #receiptModal * {
+    visibility: visible;
+  }
+
+  #receiptModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80mm;
+    padding: 0;
+    background: white;
+    font-family: monospace;
+    font-size: 11pt;
+  }
+
+  .receipt {
+    padding: 10px;
+    page-break-after: always;
+    width: 80mm;
+  }
+
+  .receipt:last-child {
+    page-break-after: auto;
+  }
+
+  .signature-line {
+    margin-top: 20px;
+  }
+
+  button {
+    display: none !important;
+  }
+}

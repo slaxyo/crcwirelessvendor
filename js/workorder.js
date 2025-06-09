@@ -175,3 +175,4 @@ Created At: ${order.created_at || '—'}
 };
 
 loadOrders();
+setTimeout(() => window.print(), 500);
