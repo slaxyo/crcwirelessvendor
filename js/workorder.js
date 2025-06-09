@@ -11,24 +11,18 @@ let allOrders = [];
 async function loadOrders() {
   const { data, error } = await supabase.from('intake_forms').select('*');
   if (error) return console.error('Load error:', error);
-
   allOrders = data;
   renderOrders('All');
 }
+
 function getStatusLabel(status) {
   switch (status) {
-    case 'Received':
-      return '📦 Received';
-    case 'In Progress':
-      return '🔧 In Progress';
-    case 'Waiting for Parts':
-      return '⏳ Waiting';
-    case 'Ready for Pickup':
-      return '✅ Ready';
-    case 'Picked Up':
-      return '✔️ Picked Up';
-    default:
-      return status;
+    case 'Received': return '📦 Received';
+    case 'In Progress': return '🔧 In Progress';
+    case 'Waiting for Parts': return '⏳ Waiting';
+    case 'Ready for Pickup': return '✅ Ready';
+    case 'Picked Up': return '✔️ Picked Up';
+    default: return status;
   }
 }
 
@@ -46,21 +40,18 @@ function renderOrders(filter) {
       card.className = 'work-order-card';
       card.dataset.status = order.status;
 
-      // Create static inner content
       card.innerHTML = `
         <div class="card-header">
           <h4>${order.model || 'Unknown Model'} – ${order.name || 'No Name'}</h4>
-<span class="status-badge ${order.status.toLowerCase().replace(/ /g, '-')}">
-  ${getStatusLabel(order.status)}
-</span>
-
+          <span class="status-badge ${order.status.toLowerCase().replace(/ /g, '-')}">
+            ${getStatusLabel(order.status)}
+          </span>
         </div>
         <p><strong>Issue:</strong> ${issueText}</p>
         <p><strong>Phone:</strong> ${order.phone || 'N/A'}</p>
         <p><strong>Notes:</strong> ${order.notes || '—'}</p>
         <p><strong>Date Received:</strong> ${order.received_date || '—'}</p>
-<p><strong>Due Date:</strong> ${order.due_date || '—'}</p>
-
+        <p><strong>Due Date:</strong> ${order.due_date || '—'}</p>
         <div class="card-actions">
           <select class="status-select">
             ${['Received', 'In Progress', 'Waiting for Parts', 'Ready for Pickup', 'Picked Up'].map(status => `
@@ -72,17 +63,24 @@ function renderOrders(filter) {
         </div>
       `;
 
-      // Add payment button separately (so we can attach event properly)
+      // Buttons
       const payBtn = document.createElement('button');
       payBtn.textContent = '💵 Take Payment';
       payBtn.addEventListener('click', () => {
         takePayment(order.name, order.phone, issueText);
       });
 
-      // Attach button to .card-actions
-      card.querySelector('.card-actions').appendChild(payBtn);
+      const printBtn = document.createElement('button');
+      printBtn.textContent = '🧾 Reprint';
+      printBtn.classList.add('reprint-btn');
+      printBtn.addEventListener('click', () => {
+        showReceiptPopup(order);
+      });
 
-      // Hook up dropdown and action buttons
+      card.querySelector('.card-actions').appendChild(payBtn);
+      card.querySelector('.card-actions').appendChild(printBtn);
+
+      // Listeners
       card.querySelector('.status-select').addEventListener('change', (e) => {
         updateStatus(order.id, e.target.value);
       });
@@ -138,5 +136,42 @@ window.takePayment = (name, phone, issue) => {
   window.open('https://mapwireless.phppointofsale.com/index.php/sales', '_blank');
 };
 
+// Receipt Reprint Logic
+window.showReceiptPopup = (order) => {
+  const issues = Array.isArray(order.issues) ? order.issues.join(', ') : order.issues;
+
+  document.getElementById("receiptCustomer").textContent = `
+CRC Wireless - Customer Receipt
+--------------------------------------
+Name: ${order.name}
+Phone: ${order.phone}
+Device: ${order.model}
+Issues: ${issues}
+Status: ${order.status}
+Amount: ${order.notes}
+Date In: ${order.received_date || '—'}
+Due Date: ${order.due_date || '—'}
+Thank you for choosing CRC Wireless!
+`;
+
+  document.getElementById("receiptInternal").textContent = `
+CRC Wireless - Internal Copy
+-------------------------------
+Name: ${order.name}
+Phone: ${order.phone}
+Password: ${order.password || 'N/A'}
+Device: ${order.model}
+Manufacturer: ${order.manufacturer || '—'}
+Issues: ${issues}
+Symptoms: ${order.symptoms || '—'}
+Status: ${order.status}
+Notes: ${order.notes || '—'}
+Date In: ${order.received_date || '—'}
+Due Date: ${order.due_date || '—'}
+Created At: ${order.created_at || '—'}
+`;
+
+  document.getElementById("receiptModal").classList.remove("hidden");
+};
 
 loadOrders();

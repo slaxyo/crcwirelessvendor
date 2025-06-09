@@ -135,19 +135,25 @@
       });
     }
   </script>
-  <div id="receiptModal" class="modal hidden">
-  <div class="modal-content">
-    <h3>🧾 Customer Receipt</h3>
-    <div id="receiptCustomer" class="receipt"></div>
+<div id="receiptModal" class="modal hidden">
+  <div class="receipt-wrapper">
+    <div class="receipt-section customer-receipt">
+      <h3>📋 CRC Wireless – Customer Copy</h3>
+      <pre id="receiptCustomer"></pre>
+    </div>
 
-    <hr />
+    <div class="receipt-section staff-receipt">
+      <h3>🔒 CRC Wireless – Staff Copy</h3>
+      <pre id="receiptInternal"></pre>
+      <div class="signature-line">Signature: _____________________________</div>
+    </div>
 
-    <h3>🗃️ Internal Copy</h3>
-    <div id="receiptInternal" class="receipt"></div>
-
-    <button onclick="window.print()">🖨️ Print Both</button>
+    <button onclick="window.print()">🖨️ Print Receipts</button>
+    <button onclick="document.getElementById('receiptModal').classList.add('hidden')">❌ Close</button>
   </div>
 </div>
+
+
 
 </body>
 </html>

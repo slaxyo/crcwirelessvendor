@@ -330,3 +330,66 @@ input[type="date"]:focus {
   font-size: 14px;
   white-space: pre-wrap;
 }
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt-wrapper, .receipt-wrapper * {
+    visibility: visible;
+  }
+
+  .receipt-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    padding: 0;
+    font-family: monospace;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+
+  .receipt-section {
+    border-top: dashed 1px black;
+    padding: 10px;
+    page-break-after: always;
+  }
+
+  .receipt-section:last-child {
+    page-break-after: auto;
+  }
+
+  .signature-line {
+    margin-top: 2rem;
+    font-size: 10pt;
+  }
+
+  button {
+    display: none !important;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.modal.hidden {
+  display: none;
+}
+.receipt-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}

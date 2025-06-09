@@ -230,3 +230,149 @@ p {
   background-color: #e2e3e5;
   color: #383d41;
 }
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.modal.hidden {
+  display: none;
+}
+.receipt-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80mm;
+  font-family: monospace;
+  font-size: 11pt;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.receipt-section {
+  margin-bottom: 24px;
+  border-bottom: 1px dashed #999;
+  padding-bottom: 10px;
+}
+.signature-line {
+  margin-top: 20px;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .receipt-wrapper, .receipt-wrapper * {
+    visibility: visible;
+  }
+  .receipt-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80mm;
+    font-size: 11pt;
+    background: white;
+    padding: 10px;
+  }
+  .receipt-section {
+    page-break-after: always;
+  }
+  .receipt-section:last-child {
+    page-break-after: auto;
+  }
+  button {
+    display: none !important;
+  }
+}
+/* === Receipt Modal === */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.receipt-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80mm;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+  font-family: monospace;
+  font-size: 11pt;
+}
+
+.receipt-section {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #999;
+}
+
+.signature-line {
+  margin-top: 16px;
+  font-size: 10pt;
+}
+
+button {
+  display: inline-block;
+  margin-top: 12px;
+  margin-right: 8px;
+  background: #222;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11pt;
+}
+
+button:hover {
+  background: #444;
+}
+
+/* === Print Styles === */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt-wrapper,
+  .receipt-wrapper * {
+    visibility: visible;
+  }
+
+  .receipt-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80mm;
+    height: 3276mm;
+    padding: 20px;
+    background: white;
+    font-family: monospace;
+    font-size: 11pt;
+  }
+
+  .receipt-section {
+    page-break-after: always;
+  }
+
+  .receipt-section:last-child {
+    page-break-after: auto;
+  }
+
+  button {
+    display: none !important;
+  }
+}

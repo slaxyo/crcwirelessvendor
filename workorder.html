@@ -37,6 +37,23 @@
       <div id="workOrderContainer" class="work-order-grid"></div>
     </div>
   </div>
+<div id="receiptModal" class="modal hidden">
+  <div class="receipt-wrapper">
+    <div class="receipt-section customer-receipt">
+      <h3>📋 CRC Wireless – Customer Copy</h3>
+      <pre id="receiptCustomer">Loading...</pre>
+    </div>
+
+    <div class="receipt-section staff-receipt">
+      <h3>🔒 CRC Wireless – Staff Copy</h3>
+      <pre id="receiptInternal">Loading...</pre>
+      <div class="signature-line">Signature: _____________________________</div>
+    </div>
+
+    <button onclick="window.print()">🖨️ Print Receipts</button>
+    <button onclick="document.getElementById('receiptModal').classList.add('hidden')">❌ Close</button>
+  </div>
+</div>
 
   <script type="module" src="js/workorder.js"></script>
 </body>

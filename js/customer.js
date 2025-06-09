@@ -74,22 +74,44 @@ Received: ${data.received_date}
 Due: ${data.due_date}
 `;
 
-document.getElementById("receiptInternal").textContent = `
-CRC Wireless – Internal Work Order
------------------------------------
-Customer: ${data.name}
-Phone: ${data.phone}
-Password: ${data.password}
-Model: ${data.model}
-Manufacturer: ${data.manufacturer}
-Issues: ${data.issues.join(', ')}
-Symptoms: ${data.symptoms}
-Status: ${data.status}
-Notes: ${data.notes}
-Received: ${data.received_date}
-Due: ${data.due_date}
-Time Submitted: ${data.created_at}
+document.getElementById("receiptCustomer").textContent = `
+  CRC Wireless - Customer Receipt
+  --------------------------------------
+  Name: ${data.name}
+  Phone: ${data.phone}
+  Device: ${data.model}
+  Issues: ${data.issues.join(', ')}
+  Status: ${data.status}
+  Amount: ${data.notes}
+  Date In: ${data.received_date}
+  Due Date: ${data.due_date}
+  Thank you for choosing CRC Wireless!
 `;
+
+document.getElementById("receiptInternal").textContent = `
+  CRC Wireless - Internal Copy
+  -------------------------------
+  Name: ${data.name}
+  Phone: ${data.phone}
+  Password: ${data.password || 'N/A'}
+  Device: ${data.model}
+  Manufacturer: ${data.manufacturer}
+  Issues: ${data.issues.join(', ')}
+  Symptoms: ${data.symptoms}
+  Status: ${data.status}
+  Amount/Notes: ${data.notes}
+  Date In: ${data.received_date}
+  Due Date: ${data.due_date}
+  Created At: ${data.created_at}
+`;
+
+document.getElementById("receiptModal").classList.remove("hidden");
+
+// Redirect after 10 seconds (enough to print)
+setTimeout(() => {
+  window.location.href = 'workorder.html';
+}, 10000);
+
 
 // Show modal
 document.getElementById("receiptModal").classList.remove("hidden");
